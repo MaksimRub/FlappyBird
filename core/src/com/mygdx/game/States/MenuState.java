@@ -17,28 +17,39 @@ public class MenuState extends State {
     }
 
     @Override
-    protected void handleScreen() {
+    protected void handleInput() {
+        if (Gdx.input.justTouched()){
+            gsm.set(new PlayState(gsm));
+        }
 
     }
 
     @Override
     public void update(float dl) {
-
+        handleInput();
     }
 
     @Override
     public void render(SpriteBatch sb) {
 
         sb.begin();
-        sb.draw(background,0,0,FlappyDemo.Width,FlappyDemo.Height);
-        sb.draw(playBtn,0,0);
+        sb.draw(background,0,0,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        sb.draw(playBtn,(float) Gdx.graphics.getWidth()/2-(float) 50,
+                (float) Gdx.graphics.getHeight()/2-(float) 50,
+                100, 100);
         sb.end();
     }
 
     @Override
     public void dispose() {
         background.dispose();
+        playBtn.dispose();
 
+    }
+
+    @Override
+    public void resize(int width, int height) {
+        viewport.update(width, height);
     }
 
 

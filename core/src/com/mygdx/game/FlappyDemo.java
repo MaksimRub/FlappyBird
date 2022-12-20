@@ -14,17 +14,22 @@ public class FlappyDemo extends ApplicationAdapter {
 	public static final int Height=800;
 
 
-	public static final int Width= 700;
+	public static final int Width= 480;
 	private GameStateMananger gsm;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		//ScreenUtils.clear(1, 0, 0, 1);
+		ScreenUtils.clear(1, 0, 0, 1);
 		 gsm = new GameStateMananger();
 		 gsm.push(new MenuState(gsm));
 	}
 
+	@Override
+	public void resize(int width, int height) {
+		super.resize(width, height);
+		gsm.resize(width, height);
+	}
 
 	@Override
 	public void render () {

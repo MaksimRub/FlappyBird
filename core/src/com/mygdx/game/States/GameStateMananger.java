@@ -25,5 +25,8 @@ public class GameStateMananger {
     }public void render(SpriteBatch sb){
         states.peek().render(sb);
     }
+    public void resize(int width, int height){
+        states.peek().resize(width, height);
+    }
 
 }
